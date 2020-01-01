@@ -1,1 +1,29 @@
-print("RegEx program")
+# I have to import the re(regular expression) from python library to start with regex
+import re
+# I opened my text file
+open_doc = open("DocExp1.txt", 'r')
+
+# i read my text file with this
+read_doc = open_doc.read()
+
+# i created an empty dictionary
+match = {}
+
+# i created a pattern of 3 alphanumeric(both strings and digit) because regex does not have a syntax for strings
+#  to search for in my text file,the re.compile is to compile the format to re engine
+wordSearch = re.compile(r'\b\w\w\w\b')
+
+# i created a search in a format of 'findall' which it can also be iterated
+mo = wordSearch.findall(read_doc)
+
+# i created a for loop to iterate through my text file and get all the available 3 letters
+for i in mo:
+
+    #this block of code i created a conditional statement to check a membership of my iterator i, it should
+    # increment itself if there is already a 3 letter word of the same type in the dictionary
+    if i in match:
+        match[i] = match[i] + 1
+    # if there is not any membership of the word add it to the dictionary
+    else:
+        match[i] = 1
+print(match)
